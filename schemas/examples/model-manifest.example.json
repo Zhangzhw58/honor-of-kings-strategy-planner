@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "model_id": "minimap-detector-efficientdet-lite0",
+  "version": "0.1.0",
+  "task": "minimap_detection",
+  "artifact": {
+    "file": "minimap-detector-v0.1.0-int8.tflite",
+    "format": "tflite",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "quantization": "int8"
+  },
+  "runtime": {
+    "name": "litert",
+    "minimum_version": "TBD_BY_ANDROID_PROTOTYPE"
+  },
+  "input": {
+    "name": "images",
+    "dtype": "uint8",
+    "shape": [1, 320, 320, 3],
+    "color_space": "RGB",
+    "normalization": "quantized parameters from model tensor"
+  },
+  "outputs": [
+    { "name": "locations", "dtype": "float32", "shape": [1, 25, 4] },
+    { "name": "classes", "dtype": "float32", "shape": [1, 25] },
+    { "name": "scores", "dtype": "float32", "shape": [1, 25] },
+    { "name": "num_detections", "dtype": "float32", "shape": [1] }
+  ],
+  "labels": {
+    "file": "minimap-v1.json",
+    "version": "1.0.0",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "training": {
+    "dataset_id": "minimap-detection",
+    "dataset_version": "1.0.0",
+    "git_commit": "eb1e6be"
+  },
+  "evaluation": {
+    "metrics": {
+      "map50": 0.0,
+      "enemy_hero_recall": 0.0
+    },
+    "calibration": "TBD before release"
+  },
+  "compatibility": {
+    "minimum_app_version": "0.1.0",
+    "layout_profiles": ["hok-cn-v0.2-1920x1080"]
+  },
+  "release_status": "candidate"
+}

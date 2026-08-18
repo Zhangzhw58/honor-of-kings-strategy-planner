@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "label_set_id": "minimap-entities",
+  "version": "1.0.0",
+  "background_id": 0,
+  "labels": [
+    { "id": 1, "name": "self_hero" },
+    { "id": 2, "name": "ally_hero" },
+    { "id": 3, "name": "enemy_hero" },
+    { "id": 4, "name": "ally_tower" },
+    { "id": 5, "name": "enemy_tower" },
+    { "id": 6, "name": "neutral_objective" }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "dataset_id": "minimap-detection",
+  "version": "1.0.0",
+  "task": "minimap_detection",
+  "created_at": "2026-08-18T10:00:00Z",
+  "label_set": {
+    "id": "minimap-entities",
+    "version": "1.0.0"
+  },
+  "layout_profiles": ["hok-cn-v0.2-1920x1080"],
+  "splits": {
+    "train": { "samples": 7000, "matches": 70 },
+    "val": { "samples": 1500, "matches": 15 },
+    "test": { "samples": 1500, "matches": 15 }
+  },
+  "source": {
+    "categories": ["self_recorded"],
+    "license": "User-authorized project use",
+    "anonymization": "Only minimap ROI retained"
+  },
+  "generator": {
+    "git_commit": "eb1e6be",
+    "random_seed": 20260818,
+    "checksums_file": "checksums.sha256"
+  }
+}

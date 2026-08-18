@@ -1,0 +1,38 @@
+{
+  "info": {
+    "version": "1.0.0",
+    "description": "Minimap detection annotation example"
+  },
+  "images": [
+    {
+      "id": 10123,
+      "file_name": "match_0001_000123.jpg",
+      "width": 256,
+      "height": 256,
+      "match_id": "match_0001",
+      "frame_index": 123,
+      "captured_at_ms": 61500,
+      "game_time_sec": 61,
+      "layout_profile": "hok-cn-v0.2-1920x1080",
+      "source_id": "recording_0001"
+    }
+  ],
+  "annotations": [
+    {
+      "id": 50001,
+      "image_id": 10123,
+      "category_id": 3,
+      "bbox": [142.0, 65.0, 12.0, 12.0],
+      "area": 144.0,
+      "iscrowd": 0
+    }
+  ],
+  "categories": [
+    { "id": 1, "name": "self_hero", "supercategory": "minimap_entity" },
+    { "id": 2, "name": "ally_hero", "supercategory": "minimap_entity" },
+    { "id": 3, "name": "enemy_hero", "supercategory": "minimap_entity" },
+    { "id": 4, "name": "ally_tower", "supercategory": "minimap_entity" },
+    { "id": 5, "name": "enemy_tower", "supercategory": "minimap_entity" },
+    { "id": 6, "name": "neutral_objective", "supercategory": "minimap_entity" }
+  ]
+}

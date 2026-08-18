@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/hok/schemas/position-sequence-sample.schema.json",
+  "title": "Enemy Position Sequence Sample",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "sample_id",
+    "match_id",
+    "hero_slot",
+    "step_ms",
+    "history",
+    "target",
+    "split"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "sample_id": { "type": "string", "minLength": 1 },
+    "match_id": { "type": "string", "minLength": 1 },
+    "hero_slot": {
+      "enum": ["enemy_clash", "enemy_jungler", "enemy_mid", "enemy_farm", "enemy_roamer"]
+    },
+    "step_ms": { "type": "integer", "minimum": 100 },
+    "history": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "$ref": "#/$defs/historyStep" }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["horizon_ms", "region"],
+      "properties": {
+        "horizon_ms": { "type": "integer", "minimum": 100 },
+        "region": { "$ref": "#/$defs/region" }
+      }
+    },
+    "split": { "enum": ["train", "val", "test"] }
+  },
+  "$defs": {
+    "region": {
+      "enum": [
+        "ally_red_zone",
+        "ally_blue_zone",
+        "enemy_red_zone",
+        "enemy_blue_zone",
+        "top_lane",
+        "mid_lane",
+        "bottom_lane",
+        "top_river",
+        "bottom_river",
+        "ally_base",
+        "enemy_base",
+        "unknown"
+      ]
+    },
+    "nullableCoordinate": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "historyStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["t_ms", "visible", "region", "x_norm", "y_norm", "observation_confidence"],
+      "properties": {
+        "t_ms": { "type": "integer", "minimum": 0 },
+        "visible": { "type": "boolean" },
+        "region": { "$ref": "#/$defs/region" },
+        "x_norm": { "$ref": "#/$defs/nullableCoordinate" },
+        "y_norm": { "$ref": "#/$defs/nullableCoordinate" },
+        "observation_confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/hok/schemas/dataset-manifest.schema.json",
+  "title": "Dataset Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "dataset_id",
+    "version",
+    "task",
+    "created_at",
+    "splits",
+    "source",
+    "generator"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "dataset_id": { "type": "string", "minLength": 1 },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "task": {
+      "enum": ["minimap_detection", "time_character_classification", "enemy_position_prediction"]
+    },
+    "created_at": { "type": "string", "format": "date-time" },
+    "label_set": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "version": { "type": "string", "minLength": 1 }
+      }
+    },
+    "layout_profiles": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "splits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["train", "val", "test"],
+      "properties": {
+        "train": { "$ref": "#/$defs/split" },
+        "val": { "$ref": "#/$defs/split" },
+        "test": { "$ref": "#/$defs/split" }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["categories", "license", "anonymization"],
+      "properties": {
+        "categories": {
+          "type": "array",
+          "items": { "enum": ["self_recorded", "licensed_public", "synthetic"] },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "license": { "type": "string", "minLength": 1 },
+        "anonymization": { "type": "string", "minLength": 1 }
+      }
+    },
+    "generator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["git_commit", "random_seed"],
+      "properties": {
+        "git_commit": { "type": "string", "pattern": "^[0-9a-f]{7,40}$" },
+        "random_seed": { "type": "integer", "minimum": 0 },
+        "checksums_file": { "type": "string", "minLength": 1 }
+      }
+    }
+  },
+  "$defs": {
+    "split": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["samples", "matches"],
+      "properties": {
+        "samples": { "type": "integer", "minimum": 0 },
+        "matches": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}

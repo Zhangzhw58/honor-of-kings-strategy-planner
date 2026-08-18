@@ -1,0 +1,117 @@
+# Operating systems
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editors and IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.swp
+*.swo
+*~
+
+# Local environment and secrets
+.env
+.env.*
+*.env
+!.env.example
+!*.env.example
+local.properties
+keystore.properties
+*.jks
+*.keystore
+*.p12
+*.pem
+*.key
+
+# Android and Gradle
+.gradle/
+**/build/
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+*.ap_
+*.aar
+*.dex
+*.class
+
+# Kotlin and Java tooling
+.kotlin/
+out/
+hs_err_pid*
+
+# Python environments and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.python-version
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pylint.d/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+dist/
+site/
+*.egg-info/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# ML experiment outputs and large model assets
+artifacts/
+checkpoints/
+runs/
+wandb/
+mlruns/
+lightning_logs/
+*.ckpt
+*.h5
+*.hdf5
+*.onnx
+*.pt
+*.pth
+*.safetensors
+*.tflite
+*.pb
+
+# Local datasets, recordings, and generated media
+data/raw/
+data/interim/
+data/processed/
+datasets/
+recordings/
+exports/
+*.mp4
+*.mkv
+*.mov
+*.avi
+*.webm
+
+# Logs, reports, and temporary files
+*.log
+logs/
+reports/
+tmp/
+temp/
+*.tmp
+*.bak
+
+# Keep repository metadata and small approved fixtures trackable
+!android/model-assets/**/model-manifest.json
+!samples/**
+!samples/**/*.mp4
+!samples/**/*.webm
+!data/README.md
+!data/**/*.schema.json

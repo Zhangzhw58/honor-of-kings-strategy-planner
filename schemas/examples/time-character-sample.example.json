@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "sample_id": "tc_000001",
+  "image_path": "images/tc_000001.png",
+  "label": "7",
+  "match_id": "match_0001",
+  "source_id": "recording_0001",
+  "layout_profile": "hok-cn-v0.2-1920x1080",
+  "captured_at_ms": 61500,
+  "split": "train"
+}

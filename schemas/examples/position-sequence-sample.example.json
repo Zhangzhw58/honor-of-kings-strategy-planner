@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "sample_id": "ps_match_0001_0060",
+  "match_id": "match_0001",
+  "hero_slot": "enemy_jungler",
+  "step_ms": 1000,
+  "history": [
+    {
+      "t_ms": 58000,
+      "visible": true,
+      "region": "top_river",
+      "x_norm": 0.58,
+      "y_norm": 0.31,
+      "observation_confidence": 0.91
+    },
+    {
+      "t_ms": 59000,
+      "visible": false,
+      "region": "unknown",
+      "x_norm": null,
+      "y_norm": null,
+      "observation_confidence": 0.0
+    }
+  ],
+  "target": {
+    "horizon_ms": 5000,
+    "region": "enemy_blue_zone"
+  },
+  "split": "train"
+}

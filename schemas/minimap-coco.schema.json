@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/hok/schemas/minimap-coco.schema.json",
+  "title": "Minimap Detection COCO Dataset",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["info", "images", "annotations", "categories"],
+  "properties": {
+    "info": {
+      "type": "object",
+      "required": ["version", "description"],
+      "properties": {
+        "version": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 1 }
+      }
+    },
+    "images": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/image" }
+    },
+    "annotations": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/annotation" }
+    },
+    "categories": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/category" }
+    }
+  },
+  "$defs": {
+    "image": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "file_name",
+        "width",
+        "height",
+        "match_id",
+        "frame_index",
+        "captured_at_ms",
+        "game_time_sec",
+        "layout_profile",
+        "source_id"
+      ],
+      "properties": {
+        "id": { "type": "integer", "minimum": 1 },
+        "file_name": { "type": "string", "pattern": "^[^\\\\]+\\.(png|jpg|jpeg)$" },
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 },
+        "match_id": { "type": "string", "minLength": 1 },
+        "frame_index": { "type": "integer", "minimum": 0 },
+        "captured_at_ms": { "type": "integer", "minimum": 0 },
+        "game_time_sec": { "type": ["integer", "null"], "minimum": 0 },
+        "layout_profile": { "type": "string", "minLength": 1 },
+        "source_id": { "type": "string", "minLength": 1 }
+      }
+    },
+    "annotation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "image_id", "category_id", "bbox", "area", "iscrowd"],
+      "properties": {
+        "id": { "type": "integer", "minimum": 1 },
+        "image_id": { "type": "integer", "minimum": 1 },
+        "category_id": { "type": "integer", "minimum": 1 },
+        "bbox": {
+          "type": "array",
+          "prefixItems": [
+            { "type": "number", "minimum": 0 },
+            { "type": "number", "minimum": 0 },
+            { "type": "number", "exclusiveMinimum": 0 },
+            { "type": "number", "exclusiveMinimum": 0 }
+          ],
+          "items": false
+        },
+        "area": { "type": "number", "exclusiveMinimum": 0 },
+        "iscrowd": { "const": 0 }
+      }
+    },
+    "category": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "supercategory"],
+      "properties": {
+        "id": { "type": "integer", "minimum": 1 },
+        "name": { "type": "string", "minLength": 1 },
+        "supercategory": { "const": "minimap_entity" }
+      }
+    }
+  }
+}
